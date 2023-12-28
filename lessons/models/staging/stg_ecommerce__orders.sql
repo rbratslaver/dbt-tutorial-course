@@ -1,24 +1,18 @@
 WITH source AS (
         SELECT *
 
-        FROM {{ source('thelook_ecommerce', 'users') }}
+        FROM {{ source('thelook_ecommerce', 'orders') }}
 )
 
 SELECT
-        id AS user_id,
-        first_name,
-        last_name,
-        email,
-        age,
+        order_id,
+        user_id,
+        status,
         gender,
-        state,
-        street_address,
-        postal_code,
-        city,
-        country,
-        latitude,
-        longitude,
-        traffic_source,
-        created_at
+        created_at,
+        returned_at,
+        shipped_at,
+        delivered_at,
+        num_of_item
 
 FROM source
